@@ -16,14 +16,14 @@ export default function EventCard({
     >
       <section
         className="w-full h-full flex flex-col bg-white/[3%] 
-    rounded-xl overflow-hidden relative transition hover:scale-105 active:scale-[1.02]"
+    rounded-xl overflow-hidden relative state-effects"
       >
         <Image
           src={imageUrl}
           alt={name}
           width={500}
           height={280}
-          className="h-[60%] object-fit"
+          className="h-[60%] object-cover"
         />
         <div className="flex flex-col flex-1 justify-center items-center">
           <h2 className="text-2xl font-semibold">{name}</h2>
