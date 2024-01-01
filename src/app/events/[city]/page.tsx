@@ -2,6 +2,7 @@ import EventsList from "@/components/events-list";
 import H1 from "@/components/h1";
 import { Suspense } from "react";
 import Loading from "./loading";
+import Events from "@/components/events";
 
 type EventsPageProps = {
   params: { city: string };
@@ -16,7 +17,7 @@ export default function EventsPage({ params: { city } }: EventsPageProps) {
           : `Events is ${city.charAt(0).toUpperCase() + city.slice(1)}`}
       </H1>
       <Suspense fallback={<Loading />}>
-        <EventsList city={city} />
+        <Events city={city} />
       </Suspense>
     </main>
   );
