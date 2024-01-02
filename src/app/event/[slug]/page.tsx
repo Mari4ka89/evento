@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Metadata } from "next";
 import Image from "next/image";
 import H1 from "@/components/h1";
+import { getEvent } from "@/lib/utils";
 
 type Props = {
   params: {
@@ -12,10 +13,7 @@ type Props = {
 export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
-  );
-  const { name } = await response.json();
+  const { name } = await getEvent(slug);
 
   return {
     title: name,
@@ -23,11 +21,8 @@ export async function generateMetadata({
 }
 
 export default async function EventPage({ params: { slug } }: Props) {
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
-  );
   const { imageUrl, name, organizerName, date, description, location } =
-    await response.json();
+    await getEvent(slug);
 
   return (
     <main>

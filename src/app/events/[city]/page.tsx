@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 import H1 from "@/components/h1";
 import Loading from "./loading";
-import Events from "@/components/events";
 import { capitalize } from "@/lib/utils";
+import EventsList from "@/components/events-list";
 
 type Props = {
   params: { city: string };
@@ -22,7 +22,7 @@ export default function EventsPage({ params: { city } }: Props) {
         {city === "all" ? "All Events" : `Events is ${capitalize(city)}`}
       </H1>
       <Suspense fallback={<Loading />}>
-        <Events city={city} />
+        <EventsList city={city} />
       </Suspense>
     </main>
   );
